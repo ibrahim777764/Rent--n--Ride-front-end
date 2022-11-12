@@ -22,22 +22,22 @@ const Navbar = () => (
           </li>
           <li>
             <NavLink to="/reservation">
-              RESERVE
+              RESERVATIONS
             </NavLink>
           </li>
           <li>
-            <NavLink to="/MY RESESERVATIONS">
-              MY RESESERVATIONS
+            <NavLink to="/booking">
+              BOOKING
             </NavLink>
           </li>
           <li>
-            <NavLink to="/addcar">
-              ADD CAR
+            <NavLink to="/about">
+              ABOUT
             </NavLink>
           </li>
           <li>
-            <NavLink to="/delete car">
-            DELETE CAR           
+            <NavLink to="/admin">
+              ADMIN
             </NavLink>
           </li>
         </ul>
