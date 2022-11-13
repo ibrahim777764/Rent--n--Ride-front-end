@@ -27,7 +27,7 @@ function LoginScreen() {
       ),
     };
 
-    const dataResponse = await fetch('https://elsonotake-backend.herokuapp.com/api/v1/auth/login', requestOptions);
+    const dataResponse = await fetch('https://github.com/ibrahim777764/Rent-and-Ride/tree/development/app/controllers/api/v1', requestOptions);
     if (dataResponse.ok) {
       const userData = await dataResponse.json();
       localStorage.setItem('current_user', JSON.stringify(userData));
