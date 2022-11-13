@@ -1,3 +1,4 @@
+/* eslint linebreak-style: ["error", "windows"] */
 import PropTypes from 'prop-types';
 import {
   FaArrowCircleRight,
@@ -38,7 +39,7 @@ Button.propTypes = {
   iconEnd: PropTypes.string,
   label: PropTypes.string.isRequired,
   size: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.object,
 };
 
 Button.defaultProps = {

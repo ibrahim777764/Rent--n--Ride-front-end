@@ -7,17 +7,119 @@
   padding: 0;
 }
 
+a {
+  color: darken($color-primary, 15);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+article {
+  border: solid 1px $color-silver;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: $padding * 2;
+  padding: $padding;
+  box-shadow: 0 5px 5px 0 rgba($color-dark, 0.15);
+  transition: $transition;
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.1em;
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  &:hover {
+    box-shadow: 0 5px 15px 0 rgba($color-dark, 0.25);
+    transition: $transition;
+  }
+
+  .dateRange {
+    display: grid;
+    gap: $padding * 2;
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+
+    div {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    span {
+      background-color: lighten($color-dark, 33);
+      color: $color-white;
+      display: inline-block;
+      font-size: 0.85rem;
+      height: 22px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      width: 50px;
+    }
+  }
+
+  .main-info {
+    align-items: center;
+    margin-bottom: $padding;
+    display: flex;
+  }
+
+  .photo {
+    background-image: url('./assets/images/bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 70px;
+    margin-right: $padding;
+    width: 70px;
+  }
+}
+
 body {
   font-family: 'Hind Guntur', sans-serif;
   font-size: 16px;
 }
 
 h1 {
-  color: tomato;
+  color: $color-dark;
 }
 
-.add-padding-below {
+.add-margin-below {
   margin-bottom: $padding;
+}
+
+.add-padding-horizontal {
+  margin: 0 $padding;
+}
+
+.centerForm {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+
+  form {
+    width: 100%;
+  }
 }
 
 .container {
@@ -27,7 +129,6 @@ h1 {
   background-size: 100% auto;
   min-height: 100vh;
   margin: 0;
-  padding: $padding;
   position: relative;
   width: 100%;
 }
@@ -56,22 +157,22 @@ h1 {
     line-height: 1.1em;
     text-align: end;
   }
+}
 
-  table {
-    background-color: rgba($color-white, 0.5);
-    border-collapse: collapse;
-    border: none;
-    font-size: 1.1rem;
-    margin: $padding 0 $padding*2 0;
-    padding: 0;
+.detail-table {
+  background-color: rgba($color-white, 0.5);
+  border-collapse: collapse;
+  border: none;
+  font-size: 1.1rem;
+  margin: $padding 0 $padding*2 0;
+  padding: 0;
 
-    td {
-      padding: calc($padding/2) $padding;
-    }
+  td {
+    padding: calc($padding/2) $padding;
+  }
 
-    tr:nth-child(even) {
-      background-color: $color-silver;
-    }
+  tr:nth-child(even) {
+    background-color: $color-silver;
   }
 }
 
@@ -83,10 +184,29 @@ h1 {
   }
 
   &-field {
-    border: none;
+    border: solid 1px transparentize($color-dark, 0.66);
     border-radius: $rounded;
     font-size: 1rem;
     padding: $padding $padding*0.75;
+    width: 100%;
+  }
+}
+
+.grid {
+  &-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-simple {
+    width: 100%;
+  }
+
+  &-double {
+    width: 100%;
+  }
+
+  &-triple {
     width: 100%;
   }
 }
@@ -95,7 +215,37 @@ h1 {
   display: none;
 }
 
+.info-container {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 90%;
+}
+
+.no-margin-padding {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .page {
+  &-admin {
+    height: auto;
+    padding: $padding*6 0;
+  }
+
+  &-about {
+    background-image: url('./assets/images/about_bg.jpg') !important;
+    background-position: top center;
+    background-size: 100% auto;
+    display: flex;
+    justify-content: center;
+    padding: $padding*6 0;
+
+    p {
+      font-size: 1rem;
+      padding-bottom: $padding * 2;
+    }
+  }
+
   &-booking {
     align-items: center;
     background-image: url('./assets/images/booking_bg.jpg') !important;
@@ -103,15 +253,60 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: $padding * 3 $padding;
+    padding: $padding*6 $padding;
 
     p {
       color: $color-white;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       padding-bottom: $padding * 2;
       max-width: 960px;
+      text-shadow: 0 2px 10px rgba($color-dark, 1);
       width: 80%;
     }
+  }
+
+  &-reservation {
+    padding: $padding*6 0;
+
+    p {
+      font-size: 1rem;
+      padding-bottom: $padding * 2;
+    }
+  }
+}
+
+.stores {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+
+  a {
+    background-color: $color-primary;
+    color: $color-white;
+    display: inline-block;
+    padding: 0 $padding;
+
+    &:hover {
+      background-color: darken($color-primary, 10);
+      text-decoration: none;
+    }
+  }
+}
+
+.table-admin {
+  border: 1px solid $color-silver;
+  width: 100%;
+  border-collapse: collapse;
+
+  td {
+    border: 1px solid $color-silver;
+    padding: $padding/2;
+  }
+
+  th {
+    background-color: $color-silver;
+    border: 1px solid $color-silver;
+    padding: $padding/2;
   }
 }
 
@@ -129,6 +324,12 @@ h1 {
   }
 }
 
+.w {
+  &-100 {
+    width: 100%;
+  }
+}
+
 .whiteCortain {
   align-items: center;
   background: rgba($color-white, 0.5);
@@ -142,11 +343,21 @@ h1 {
   width: 100%;
 }
 
+.division-span {
+  color: $color-silver;
+  width: 40%;
+  margin: $spacer auto $spacer auto;
+}
+
 // #######################################################################################
 // #################################### TABLET $ DESKTOP #################################
 // #######################################################################################
 
 @media (min-width: $breakpoint-tablet) {
+  article {
+    flex-direction: row;
+  }
+
   .container {
     background-position: center center;
     background-size: cover;
@@ -156,6 +367,40 @@ h1 {
 
   .detailBox {
     width: 75%;
+  }
+
+  .grid {
+    &-display {
+      display: grid;
+      gap: $padding;
+    }
+
+    &-flex {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-simple {
+      grid-template-columns: 1fr;
+    }
+
+    &-double {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &-triple {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  .page-reservation {
+    .main-info {
+      margin-bottom: 0;
+    }
+  }
+
+  .stores {
+    grid-template-columns: 1fr 1fr;
   }
 
   .whiteCortain {
@@ -168,6 +413,10 @@ h1 {
 }
 
 @media (min-width: $breakpoint-desktop) {
+  .stores {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
   .whiteCortain {
     width: 40%;
   }
