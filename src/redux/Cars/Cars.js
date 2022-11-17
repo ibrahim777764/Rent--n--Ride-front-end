@@ -18,6 +18,26 @@ export const loadCarsThunk = createAsyncThunk(GET_CARS, async () => {
   return res;
 });
 
+export const addCarThunk = createAsyncThunk(POST_CAR, async (
+  { name, image, description, price, location, duration },
+  thunkAPI,
+) => {
+  const car = {
+    name,
+    image,
+    description,
+    price,
+    location,
+    duration,
+  };
+  // fetch cars
+  await axios.post(url, car)
+    .then(() => thunkAPI.dispatch(loadCarsThunk()))
+    .catch((err) => { console.log('Error', err); });
+
+  const cars = thunkAPI.getState().carsList;
+  return cars;
+});
 
 // Reducer
 const CarsSlice = createSlice({
@@ -40,6 +60,7 @@ const CarsSlice = createSlice({
       });
       return newState;
     },
+    [addCarThunk.fulfilled]: (state, action) => action.payload,
   },
 });
 
