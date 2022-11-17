@@ -160,7 +160,7 @@ Booking.propTypes = {
   btnAxn: PropTypes.func,
   close: PropTypes.bool,
   state: PropTypes.bool,
-  price: PropTypes.number,
+  price: PropTypes.string,
   vehicle: PropTypes.number,
 };
 
