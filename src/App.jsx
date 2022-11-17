@@ -1,4 +1,4 @@
-/* eslint linebreak-style: ["error", "windows"] */
+import { React, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,8 +16,16 @@ import ReservationScreen from './routes/Reservation';
 import LoginScreen from './routes/Login';
 import SignupScreen from './routes/Signup';
 // import ProtectedRoutes from './routes/ProtectedRoutes';
+import { useDispatch } from 'react-redux';
+import { loadCarsThunk } from './redux/Cars/Cars'
 
 function App() {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadCarsThunk());
+  }, []);
+
   return (
     <Router>
       <Navbar />
