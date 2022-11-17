@@ -16,12 +16,14 @@ import ReservationScreen from './routes/Reservation';
 // import LoginScreen from './routes/Login';
 // import SignupScreen from './routes/Signup';
 // import ProtectedRoutes from './routes/ProtectedRoutes';
+import AddCar from './components/addCar/addCar';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/addCar" element={<AddCar/>} />
         {/* <Route element={<LoginScreen />} path="/login" />
         <Route element={<SignupScreen />} path="/signup" /> */}
 
@@ -35,7 +37,7 @@ function App() {
           <Route element={<ReservationScreen />} path="/reservation" />
           <Route element={<HomeScreen />} path="/models" />
           <Route element={<HomeScreen />} index />
-
+          {/* <Route element={<AddCar />} index /> */}
         {/* </Route> */}
 
         <Route

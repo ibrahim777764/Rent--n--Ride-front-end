@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
+import './addCar.scss';
 
-function AddCar() {
+class AddCar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+  }
+
+  render () {
   return (
-    <div></div>
+    <div className='car-head'>
+      <h1>I Love Lamborghini</h1>
+
+      <form>
+        <label>Name: </label> <br />
+        <input type='text' name='name' /> <br />
+      </form>
+    </div>
   )
+ }
 }
 
 export default AddCar
