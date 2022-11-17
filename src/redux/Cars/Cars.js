@@ -10,6 +10,7 @@ const POST_CAR = 'redux/Cars/Cars/POST_CAR';
 const DELETE_CAR = 'redux/Cars/Cars/DELETE_CAR';
 
 // Create ASYNC Thunks
+// Load Cars from the API
 export const loadCarsThunk = createAsyncThunk(GET_CARS, async () => {
   const response = await axios.get(url).catch((err) => {
     console.log('Error', err);
@@ -18,6 +19,7 @@ export const loadCarsThunk = createAsyncThunk(GET_CARS, async () => {
   return res;
 });
 
+// Add Car to the api with post method 
 export const addCarThunk = createAsyncThunk(POST_CAR, async (
   { name, image, description, price, location, duration },
   thunkAPI,
@@ -35,6 +37,16 @@ export const addCarThunk = createAsyncThunk(POST_CAR, async (
     .then(() => thunkAPI.dispatch(loadCarsThunk()))
     .catch((err) => { console.log('Error', err); });
 
+  const cars = thunkAPI.getState().carsList;
+  return cars;
+});
+
+// Delete Car from the api with delete method
+export const deleteCarThunk = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
+  // fetch Cars
+  await axios.delete(`${url}${id}`)
+    .then(() => thunkAPI.dispatch(loadCarsThunk()))
+    .catch((err) => { console.log('Error', err); });
   const cars = thunkAPI.getState().carsList;
   return cars;
 });
@@ -61,6 +73,7 @@ const CarsSlice = createSlice({
       return newState;
     },
     [addCarThunk.fulfilled]: (state, action) => action.payload,
+    [deleteCarThunk.fulfilled]: (state, action) => action.payload,
   },
 });
 
