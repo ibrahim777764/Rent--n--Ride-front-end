@@ -1,10 +1,10 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import { configureStore } from '@reduxjs/toolkit';
-import vehiclesReducer from './vehicles/vehicles';
+import carsReducer from './Cars/Cars';
 
 const store = configureStore({
   reducer: {
-    vehicles: vehiclesReducer,
+    cars: carsReducer,
   },
 });
 
