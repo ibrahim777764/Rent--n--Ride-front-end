@@ -21,11 +21,11 @@ const AddCar = () => {
 
       <div className="grid-display grid-simple">
         <div className="add-margin-below">
-          <label htmlFor="brand">Brand</label>
+          <label htmlFor="name">Name</label>
           <input
             type="text"
-            id="brand"
-            name="brand"
+            id="name"
+            name="name"
             placeholder="Ferrari"
             className="form-field"
             required
