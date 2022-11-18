@@ -9,7 +9,14 @@ const AddCar = () => {
     formState: { errors }
   } = useForm();
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
+  const [image, setImage] = useState(null)
+
+  const onImageChange = (event) => {
+   if (event.target.files && event.target.files[0]) {
+     setImage(URL.createObjectURL(event.target.files[0]));
+   }
+  }
 
   const onSubmit = (data) => {
     console.log(data);
@@ -38,11 +45,8 @@ const AddCar = () => {
       <div className="grid-display grid-simple">
         <div className="add-margin-below">
           <label htmlFor="image">Image</label><br/>
-          <input
-          type="file"
-          value={selectedFile}
-          onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
+          <input type="file" onChange={onImageChange} className="filetype" />
+          <img src={image} alt="preview image" />
         </div>
       </div>
 
@@ -103,74 +107,9 @@ const AddCar = () => {
           />
         </div>
       </div>
-
-      {/* <div className="grid-display grid-double">
-        <div className="add-margin-below grid-double">
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            placeholder="Italia"
-            className="form-field"
-            required
-          />
-        </div>
-      </div> */}
-
-      {/* <h3>Technical Specs</h3>
-
-      <div className="grid-display grid-triple">
-        <div className="add-margin-below">
-          <label htmlFor="power">Power</label>
-          <input
-            type="text"
-            id="power"
-            name="power"
-            placeholder="780 CV (574 kW)"
-            className="form-field"
-            required
-          />
-        </div>
-
-        <div className="add-margin-below">
-          <label htmlFor="max_speed">Max Speed</label>
-          <input
-            type="text"
-            id="max_speed"
-            name="max_speed"
-            placeholder="355 km/h"
-            className="form-field"
-            required
-          />
-        </div>
-
-        <div className="add-margin-below">
-          <label htmlFor="acceleration">Acceleration</label>
-          <input
-            type="text"
-            id="acceleration"
-            name="acceleration"
-            placeholder="9.8s"
-            className="form-field"
-            required
-          />
-        </div>
-      </div> */}
-
-
-        {/* <div className="form-control">
-          <label>Name</label>
-          <input type="text" name="email" {...register("email")} />
-        </div>
-        <div className="form-control">
-          <label>Password:</label>
-          <input type="password" name="password" {...register("password")} />
-        </div>
-        <div className="form-control">
-          <label></label>
-          <button type="submit">Login</button>
-        </div> */}
+      <div className="submit-btn">
+      <button type="submit" className="button">Create a Car</button>
+      </div>
       </form>
     </div>
   );
