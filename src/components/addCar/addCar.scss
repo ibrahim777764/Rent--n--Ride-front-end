@@ -1,7 +1,11 @@
 @import "../../config.scss";
 
 .car-heading {
-    margin: 5% 30%;
+    margin: 5% 10%;
+    background-color: #98bd2a;
+    width: 80%;
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 
 .car-head {
@@ -9,12 +13,19 @@
     font-weight: 700;
     text-align: center;
 }
+
+.car-img {
+  width: 200px;
+  height: 200px;
+}
+
 .button {
     background-color: #98bd2a;
     text-align: center;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
+    border: 2px solid #fff;
 
     &:hover {
         outline: $color-primary 1px solid;
@@ -34,10 +45,23 @@
 // #######################################################################################
 
 @media (min-width: $breakpoint-tablet) {
+  .car-heading {
+    margin: 5% 30%;
+    width: 40%;
+    background-color: #98bd2a;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+
   .car-head {
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
+  }
+
+  .car-img {
+    width: 300px;
+    height: 300px;
   }
 
   .button {
@@ -47,6 +71,7 @@
     align-items: center;
     justify-content: center;
     margin: 20px auto;
+    border: 2px solid #fff;
 
     &:hover {
         outline: $color-primary 1px solid;

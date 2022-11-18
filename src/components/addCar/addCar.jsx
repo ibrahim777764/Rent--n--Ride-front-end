@@ -46,7 +46,7 @@ const AddCar = () => {
         <div className="add-margin-below">
           <label htmlFor="image">Image</label><br/>
           <input type="file" onChange={onImageChange} className="filetype" />
-          <img src={image} alt="preview image" />
+          <img src={image} alt="preview image" className="car-img"/>
         </div>
       </div>
 
