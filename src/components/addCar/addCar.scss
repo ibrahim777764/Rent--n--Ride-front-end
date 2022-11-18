@@ -5,7 +5,7 @@
 }
 
 .car-head {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
 }
@@ -26,5 +26,31 @@
     background-color: $color-primary;
     border-right: 1px solid $color-primary;
     color: $color-white;
+  }
+}
+
+// #######################################################################################
+// ################################### DESKTOP VERSION ###################################
+// #######################################################################################
+
+@media (min-width: $breakpoint-tablet) {
+  .car-head {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .button {
+    background-color: #98bd2a;
+    width: 150px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+
+    &:hover {
+        outline: $color-primary 1px solid;
+        outline-offset: calc($padding / 2);
+    }
   }
 }
