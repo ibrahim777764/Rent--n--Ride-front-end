@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import './addCar.scss';
 
@@ -9,13 +9,15 @@ const AddCar = () => {
     formState: { errors }
   } = useForm();
 
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const onSubmit = (data) => {
     console.log(data);
   };
 
   return (
     <div className="car-head">
-      <h1>I Love Lamborghini</h1>
+      <h1>Add New Car</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -33,33 +35,76 @@ const AddCar = () => {
         </div>
       </div>
 
-      <div className="grid-display grid-double">
+      <div className="grid-display grid-simple">
         <div className="add-margin-below">
-          <label htmlFor="brand">Model</label>
+          <label htmlFor="image">Image</label><br/>
+          <input
+          type="file"
+          value={selectedFile}
+          onChange={(e) => setSelectedFile(e.target.files[0])}
+          />
+        </div>
+      </div>
+
+      <div className="grid-display grid-simple">
+        <div className="add-margin-below">
+          <label htmlFor="name">Description</label>
+          <textarea
+          name="description"
+          className="form-field"
+          required
+          />
+        </div>
+      </div>
+
+      <div className="grid-display grid-triple">
+        <div className="add-margin-below">
+          <label htmlFor="brand">Price</label>
           <input
             type="text"
-            id="model"
-            name="model"
-            placeholder="Testarossa"
+            id="price"
+            name="price"
+            placeholder="price in $"
             className="form-field"
             required
           />
         </div>
 
-        <div className="add-margin-below grid-double">
-          <label htmlFor="year">Year</label>
+        <div className="add-margin-below">
+        <label htmlFor="location">Location</label>
+          <select
+            name="location"
+            className="form-field"
+            required
+          >
+            <option value="location">Select location</option>
+            <option value="lon">London</option>
+            <option value="new">Newcastle</option>
+            <option value="man">Manchester</option>
+            <option value="ist">Istanbul</option>
+            <option value="leed">Leeds</option>
+            <option value="west">West London</option>
+            <option value="nyk">New York</option>
+            <option value="Amst">Amsterdam</option>
+            <option value="njy">New Jersey</option>
+            <option value="san">San Fransisco</option>
+          </select>
+        </div>
+
+        <div className="add-margin-below">
+          <label htmlFor="duration">Duration</label>
           <input
             type="text"
-            id="year"
-            name="year"
-            placeholder="2018"
+            id="duration"
+            name="duration"
+            placeholder="9.8s"
             className="form-field"
             required
           />
         </div>
       </div>
 
-      <div className="grid-display grid-double">
+      {/* <div className="grid-display grid-double">
         <div className="add-margin-below grid-double">
           <label htmlFor="country">Country</label>
           <input
@@ -71,31 +116,9 @@ const AddCar = () => {
             required
           />
         </div>
+      </div> */}
 
-        <div className="add-margin-below">
-          <label htmlFor="vehicle">Color</label>
-          <select
-            name="vehicle"
-            className="form-field"
-            // defaultValue={vehicle || ''}
-            required
-          >
-            <option value="">Select one</option>
-            <option value="Black">Black</option>
-            <option value="Blue">Blue</option>
-            <option value="Brown">Brown</option>
-            <option value="Carbon">Carbon</option>
-            <option value="Green">Green</option>
-            <option value="Orange">Orange</option>
-            <option value="Red">Red</option>
-            <option value="Silver">Silver</option>
-            <option value="Yellow">Yellow</option>
-            <option value="White">White</option>
-          </select>
-        </div>
-      </div>
-
-      <h3>Technical Specs</h3>
+      {/* <h3>Technical Specs</h3>
 
       <div className="grid-display grid-triple">
         <div className="add-margin-below">
@@ -133,17 +156,9 @@ const AddCar = () => {
             required
           />
         </div>
-      </div>
+      </div> */}
 
-      <h3>Description</h3>
 
-      <div className="add-margin-below">
-        <textarea
-          name="description"
-          className="form-field"
-          required
-        />
-      </div>
         {/* <div className="form-control">
           <label>Name</label>
           <input type="text" name="email" {...register("email")} />
