@@ -23,8 +23,8 @@ const AddCar = () => {
   };
 
   return (
-    <div className="car-head">
-      <h1>Add New Car</h1>
+    <div className="car-heading">
+      <h1 className="car-head">Add New Car</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
