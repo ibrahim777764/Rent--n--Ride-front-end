@@ -17,6 +17,7 @@ import ReservationScreen from './routes/Reservation';
 // import SignupScreen from './routes/Signup';
 // import ProtectedRoutes from './routes/ProtectedRoutes';
 import AddCar from './components/addCar/addCar';
+import DeleteCar from './components/deleteCar/DeleteCar';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/addCar" element={<AddCar/>} />
+        <Route path="/deleteCar" element={<DeleteCar/>} />
         {/* <Route element={<LoginScreen />} path="/login" />
         <Route element={<SignupScreen />} path="/signup" /> */}
 
