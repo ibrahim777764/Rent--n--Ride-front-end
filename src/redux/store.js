@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'reduxgit';
+import { combineReducers } from 'redux';
 import loginReducer from './auth/login';
 import signUpReducer from './auth/signup';
 import vehiclesReducer from './vehicles/vehicles';
