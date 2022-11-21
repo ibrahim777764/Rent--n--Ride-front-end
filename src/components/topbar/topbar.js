@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import './topbar.css';
-
 function TopBar({ userSession, setUserSession }) {
   const [loginLink, setLoginLink] = useState('hidden');
   const [signoutLink, setSignoutLink] = useState('hidden');
@@ -24,7 +22,6 @@ function TopBar({ userSession, setUserSession }) {
   }, [location]);
 
   const signUserOut = () => {
-    console.log('what');
     setAuthLinks('');
     setSignoutLink('hidden');
 
