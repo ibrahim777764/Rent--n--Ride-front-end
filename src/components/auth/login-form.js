@@ -12,25 +12,35 @@ function LoginForm({ setUserSession, userSession }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const signupSuccess = useSelector((state) => state.signUp.success);
-  const location = useLocation();
+  //   const location = useLocation();
 
-  useEffect(() => {
-    if (userSession && location.pathname === '/login') navigate('/');
-  }, [location]);
+  // useEffect(() => {
+  //     if (userSession && location.pathname === '/login') navigate('/');
+  //   }, [location]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const formObject = new FormData(e.target);
     const data = Object.fromEntries(formObject.entries());
 
-    const response = dispatch(login(data));
-    if ('token' in response.payload) setUserSession(response.payload);
-    navigate('/');
+    const response = await fetch('https://protected-sea-38971.herokuapp.com/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(FormData),
+    });
+    if (response.ok) {
+      const session = await response.json();
+    // now here you can manipulate the data received from the server side
+    // can dispatch calls to the redux state, so it can store the login session for later use
+    // afterward, you can then navigate to another component by using navigate(VIEW_URL)
+    }
   };
   return (
     <div className="container page-login">
 
-      <form className="login-form" method="POST" onSubmit={onSubmit}>
+      <form className="login-form" onSubmit={onSubmit}>
         {/* <p className="success-message">{signupSuccess}</p> */}
 
         <div className="add-padding-below">
@@ -46,7 +56,7 @@ function LoginForm({ setUserSession, userSession }) {
 
         <div className="add-padding-below">
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             className="form-field"

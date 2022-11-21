@@ -21,13 +21,14 @@ function SignupForm({ userSession }) {
     e.preventDefault();
     const formObject = new FormData(e.target);
     const data = Object.formEntries(formObject.entries());
+    console.log(data);
 
     dispatch(signUp(data));
     navigate('/login');
   };
   return (
     <div className="container page-login">
-      <form className="login-form" method="POST" onSubmit={onSubmit}>
+      <form className="login-form" onSubmit={onSubmit}>
         <h2>SIGNUP</h2>
 
         <div className="add-padding-below">
@@ -54,7 +55,7 @@ function SignupForm({ userSession }) {
 
         <div className="add-padding-below">
           <input
-            type="text"
+            type="password"
             id="password"
             name="password"
             className="form-field"
@@ -65,7 +66,7 @@ function SignupForm({ userSession }) {
 
         <div className="add-padding-below">
           <input
-            type="text"
+            type="password"
             id="password"
             name="password_confirmation"
             className="form-field"
