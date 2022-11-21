@@ -2,8 +2,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable linebreak-style */
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './auth.scss';
 import { login } from '../../redux/auth/login';
@@ -65,11 +65,11 @@ function LoginForm({ setUserSession, userSession }) {
 }
 
 // eslint-disable-next-line react/no-typos
-LoginForm.propTypes = {
-  userSession: PropTypes.oneOfType([
-    PropTypes.objectOf(PropTypes.string),
-    PropTypes.oneOf(['null', 'undefined']),
-  ]),
-};
+// LoginForm.propTypes = {
+//   userSession: PropTypes.oneOfType([
+//     PropTypes.objectOf(PropTypes.string),
+//     PropTypes.oneOf(['null', 'undefined']),
+//   ]),
+// };
 
 export default LoginForm;

@@ -16,7 +16,6 @@ import NewScreen from './routes/admin/New';
 import ReservationScreen from './routes/Reservation';
 import SignupForm from './components/auth/signup-form';
 import LoginForm from './components/auth/login-form';
-import TopBar from './components/topbar/topbar';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <TopBar userSession={userSession} setUserSession={setUserSession} />
       <Routes>
         <Route element={<LoginForm setUserSession={setUserSession} userSession={userSession} />} path="/login" />
         <Route element={<SignupForm userSession={userSession} />} path="/signup" />

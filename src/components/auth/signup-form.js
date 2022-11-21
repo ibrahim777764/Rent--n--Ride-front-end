@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable linebreak-style */
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { signUp } from '../../redux/auth/signup';
@@ -83,11 +83,11 @@ function SignupForm({ userSession }) {
   );
 }
 
-SignupForm.propTypes = {
-  userSession: PropTypes.oneOfType([
-    PropTypes.objectOf(PropTypes.string),
-    PropTypes.oneOf(['null', 'undefined']),
-  ]),
-};
+// SignupForm.propTypes = {
+//   userSession: PropTypes.oneOfType([
+//     PropTypes.objectOf(PropTypes.string),
+//     PropTypes.oneOf(['null', 'undefined']),
+//   ]),
+// };
 
 export default SignupForm;
