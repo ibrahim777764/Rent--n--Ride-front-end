@@ -18,12 +18,12 @@ const DeleteCar = () => {
     <div className="delete-car-container">
       <h2 className="delete-head">Delete Car</h2>
       <hr id="add-room-hr" />
-        <p className="delete-para">
-			    Would you like to delete your car from our website?
-          {" "}
-			    <br />
-          You can do it with one click!
-        </p>
+      <p className="delete-para">
+        Would you like to delete your car from our website?
+        {" "}
+        <br />
+        You can do it with one click!
+      </p>
     </div>
   );
 };
