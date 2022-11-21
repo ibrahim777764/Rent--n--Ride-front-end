@@ -13,11 +13,14 @@ import EditScreen from './routes/admin/Edit';
 import HomeScreen from './routes/Home';
 import NewScreen from './routes/admin/New';
 import ReservationScreen from './routes/Reservation';
+
 import LoginScreen from './routes/Login';
 import SignupScreen from './routes/Signup';
 // import ProtectedRoutes from './routes/ProtectedRoutes';
 import { useDispatch } from 'react-redux';
 import { loadCarsThunk } from './redux/Cars/Cars'
+import AddCar from './components/addCar/addCar';
+import DeleteCar from './components/deleteCar/DeleteCar';
 
 function App() {
 
@@ -30,6 +33,8 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
+        <Route path="/addCar" element={<AddCar />} />
+        <Route path="/deleteCar" element={<DeleteCar />} />
         {/* <Route element={<LoginScreen />} path="/login" />
         <Route element={<SignupScreen />} path="/signup" /> */}
 
@@ -43,6 +48,7 @@ function App() {
         <Route element={<ReservationScreen />} path="/reservation" />
         <Route element={<HomeScreen />} path="/models" />
         <Route element={<HomeScreen />} index />
+        {/* <Route element={<AddCar />} index /> */}
         {/* </Route> */}
 
         <Route
@@ -53,8 +59,8 @@ function App() {
           )}
           path="*"
         />
-      </Routes>
-    </Router>
+      </Routes >
+    </Router >
   );
 }
 
