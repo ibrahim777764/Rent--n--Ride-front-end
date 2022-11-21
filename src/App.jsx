@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { useState } from 'react';
 import Navbar from './components/navbar/Navbar';
 import AboutScreen from './routes/About';
 import AdminScreen from './routes/admin/Admin';
@@ -13,17 +14,20 @@ import EditScreen from './routes/admin/Edit';
 import HomeScreen from './routes/Home';
 import NewScreen from './routes/admin/New';
 import ReservationScreen from './routes/Reservation';
-import LoginScreen from './routes/Login';
-import SignupScreen from './routes/Signup';
+import SignupForm from './components/auth/signup-form';
+import LoginForm from './components/auth/login-form';
+import TopBar from './components/topbar/topbar';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 
 function App() {
+  const [userSession, setUserSession] = useState(() => JSON.parse(localStorage.getItem('user')));
   return (
     <Router>
       <Navbar />
+      <TopBar userSession={userSession} setUserSession={setUserSession} />
       <Routes>
-        <Route element={<LoginScreen />} path="/login" />
-        <Route element={<SignupScreen />} path="/signup" />
+        <Route element={<LoginForm setUserSession={setUserSession} userSession={userSession} />} path="/login" />
+        <Route element={<SignupForm userSession={userSession} />} path="/signup" />
 
         <Route element={<ProtectedRoutes />}>
           <Route element={<AdminScreen />} path="/admin" />

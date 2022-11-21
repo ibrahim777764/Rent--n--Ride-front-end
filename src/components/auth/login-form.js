@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable react/prop-types */
+/* eslint-disable linebreak-style */
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +8,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './auth.scss';
 import { login } from '../../redux/auth/login';
 
-function loginForm({ setUserSession, userSession }) {
+function LoginForm({ setUserSession, userSession }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signupSuccess = useSelector((state) => state.signUp.success);
@@ -21,7 +23,7 @@ function loginForm({ setUserSession, userSession }) {
     const formObject = new FormData(e.target);
     const data = Object.fromEntries(formObject.entries());
 
-    const response = await dispatch(login(data));
+    const response = dispatch(login(data));
     if ('token' in response.payload) setUserSession(response.payload);
     navigate('/');
   };
@@ -63,11 +65,11 @@ function loginForm({ setUserSession, userSession }) {
 }
 
 // eslint-disable-next-line react/no-typos
-loginForm.PropTypes = {
+LoginForm.PropTypes = {
   userSession: PropTypes.oneOfType([
     PropTypes.objectOf(PropTypes.string),
     PropTypes.oneOf(['null', 'undefined']),
   ]).isRequired,
 };
 
-export default loginForm;
+export default LoginForm;
