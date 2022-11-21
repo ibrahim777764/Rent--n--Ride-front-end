@@ -22,19 +22,18 @@ function LoginForm({ setUserSession, userSession }) {
     e.preventDefault();
     const formObject = new FormData(e.target);
     const data = Object.fromEntries(formObject.entries());
-
     const response = await fetch('https://protected-sea-38971.herokuapp.com/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(FormData),
+      body: JSON.stringify(data),
     });
     if (response.ok) {
       const session = await response.json();
-    // now here you can manipulate the data received from the server side
-    // can dispatch calls to the redux state, so it can store the login session for later use
-    // afterward, you can then navigate to another component by using navigate(VIEW_URL)
+      // now here you can manipulate the data received from the server side
+      // can dispatch calls to the redux state, so it can store the login session for later use
+      // afterward, you can then navigate to another component by using navigate(VIEW_URL)
     }
   };
   return (
