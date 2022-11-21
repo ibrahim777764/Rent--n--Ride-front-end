@@ -54,8 +54,8 @@ TopBar.propTypes = {
   userSession: PropTypes.oneOfType([
     PropTypes.objectOf(PropTypes.string),
     PropTypes.oneOf(['null', 'undefined']),
-  ]).isRequired,
-  setUserSession: PropTypes.func.isRequired,
+  ]),
+  setUserSession: PropTypes.func,
 };
 
 export default TopBar;

@@ -83,11 +83,11 @@ function SignupForm({ userSession }) {
   );
 }
 
-SignupForm.PropTypes = {
+SignupForm.propTypes = {
   userSession: PropTypes.oneOfType([
     PropTypes.objectOf(PropTypes.string),
     PropTypes.oneOf(['null', 'undefined']),
-  ]).isRequired,
+  ]),
 };
 
 export default SignupForm;

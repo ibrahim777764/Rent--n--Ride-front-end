@@ -11,7 +11,7 @@ import { login } from '../../redux/auth/login';
 function LoginForm({ setUserSession, userSession }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const signupSuccess = useSelector((state) => state.signUp.success);
+  // const signupSuccess = useSelector((state) => state.signUp.success);
   const location = useLocation();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function LoginForm({ setUserSession, userSession }) {
     <div className="container page-login">
 
       <form className="login-form" method="POST" onSubmit={onSubmit}>
-        <p className="success-message">{ signupSuccess }</p>
+        {/* <p className="success-message">{signupSuccess}</p> */}
 
         <div className="add-padding-below">
           <input
@@ -65,11 +65,11 @@ function LoginForm({ setUserSession, userSession }) {
 }
 
 // eslint-disable-next-line react/no-typos
-LoginForm.PropTypes = {
+LoginForm.propTypes = {
   userSession: PropTypes.oneOfType([
     PropTypes.objectOf(PropTypes.string),
     PropTypes.oneOf(['null', 'undefined']),
-  ]).isRequired,
+  ]),
 };
 
 export default LoginForm;
