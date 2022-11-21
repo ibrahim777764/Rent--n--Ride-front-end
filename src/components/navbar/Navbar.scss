@@ -3,7 +3,7 @@
 nav {
   width: 90%;
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1rem;
 
   ul {
     list-style-type: none;
@@ -16,7 +16,7 @@ nav {
     display: block;
     margin-right: -2px;
     padding: $padding * 1.25;
-    padding-bottom: $padding * 0.9;
+    padding-bottom: $padding * 0.5;
     text-decoration: none;
     transition: $transition;
 
@@ -44,7 +44,7 @@ nav {
   display: flex;
   height: $navbar-size;
   justify-content: center;
-  margin-bottom: 5vh;
+  margin-bottom: 3vh;
   transition: $transition;
   width: $navbar-size;
 

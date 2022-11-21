@@ -13,19 +13,23 @@ import EditScreen from './routes/admin/Edit';
 import HomeScreen from './routes/Home';
 import NewScreen from './routes/admin/New';
 import ReservationScreen from './routes/Reservation';
-import LoginScreen from './routes/Login';
-import SignupScreen from './routes/Signup';
-import ProtectedRoutes from './routes/ProtectedRoutes';
+// import LoginScreen from './routes/Login';
+// import SignupScreen from './routes/Signup';
+// import ProtectedRoutes from './routes/ProtectedRoutes';
+import AddCar from './components/addCar/addCar';
+import DeleteCar from './components/deleteCar/DeleteCar';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route element={<LoginScreen />} path="/login" />
-        <Route element={<SignupScreen />} path="/signup" />
+        <Route path="/addCar" element={<AddCar/>} />
+        <Route path="/deleteCar" element={<DeleteCar/>} />
+        {/* <Route element={<LoginScreen />} path="/login" />
+        <Route element={<SignupScreen />} path="/signup" /> */}
 
-        <Route element={<ProtectedRoutes />}>
+        {/* <Route element={<ProtectedRoutes />}> */}
           <Route element={<AdminScreen />} path="/admin" />
           <Route element={<NewScreen />} path="/admin/new" />
           <Route element={<EditScreen />} path="/admin/edit/:id" />
@@ -35,7 +39,8 @@ function App() {
           <Route element={<ReservationScreen />} path="/reservation" />
           <Route element={<HomeScreen />} path="/models" />
           <Route element={<HomeScreen />} index />
-        </Route>
+          {/* <Route element={<AddCar />} index /> */}
+        {/* </Route> */}
 
         <Route
           element={(

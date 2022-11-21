@@ -80,6 +80,16 @@ const Navbar = () => {
                   ABOUT
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/addCar" onClick={() => setNavVisible(false)}>
+                  ADD CAR
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/deleteCar" onClick={() => setNavVisible(false)}>
+                  DELETE CAR
+                </NavLink>
+              </li>
               {isAdmin && (
               <li>
                 <NavLink to="/admin" onClick={() => setNavVisible(false)}>
