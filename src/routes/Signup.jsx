@@ -8,6 +8,7 @@ function Signup() {
   const name = useRef();
   const email = useRef();
   const password = useRef();
+  const passwordConfirmation = useRef();
   const loginForm = useRef();
 
   const [isActive, setActive] = useState(true);
@@ -16,8 +17,8 @@ function Signup() {
     setActive(false);
   };
 
-  const sendForm = async () => {
-    const signupOptions = {
+  const sendForm = () => {
+    fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(
@@ -25,31 +26,16 @@ function Signup() {
           name: name.current.value.trim(),
           email: email.current.value.trim(),
           password: password.current.value,
+          passwordConfirmation: passwordConfirmation.current.value,
         },
+        console.log(name.current.value),
       ),
-    };
-
-    await fetch('https://github.com/ibrahim777764/Rent-and-Ride/tree/development/app/controllers/api/v1', signupOptions);
-
-    const loginOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        {
-          name: name.current.value.trim(),
-          password: password.current.value,
-        },
-      ),
-    };
-
-    const dataResponse = await fetch('https://github.com/ibrahim777764/Rent-and-Ride/tree/development/app/controllers/api/v1', loginOptions);
-    if (dataResponse.ok) {
-      const userData = await dataResponse.json();
-      localStorage.setItem('current_user', JSON.stringify(userData));
-      window.location.href = '/';
-    } else {
-      ToggleClass();
-    }
+    });
+    // .then((resp) => console.log(resp.json()));
+    // .then((data) => {
+    //   localStorage.setItem('token', data.token);
+    //   console.log(data.token);
+    // });
   };
 
   return (
@@ -90,6 +76,18 @@ function Signup() {
             name="password"
             className="form-field"
             placeholder="Password"
+            required
+          />
+        </div>
+
+        <div className="add-padding-below">
+          <input
+            ref={passwordConfirmation}
+            type="text"
+            id="password"
+            name="password"
+            className="form-field"
+            placeholder="Password confirmation"
             required
           />
         </div>
