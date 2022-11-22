@@ -53,6 +53,19 @@ function SignupForm() {
     // dispatch(signUp(data));
     // navigate('/login');
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(signUp(state));
+  // };
+
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   // const formObject = new FormData(e.target);
+  //   // const data = Object.formEntries(formObject.entries());
+  //   dispatch(signUp(state));
+  //   // navigate('/login');
+  // };
   return (
     <div className="container page-login">
       <form className="login-form" onSubmit={onSubmit}>
@@ -106,7 +119,6 @@ function SignupForm() {
             required
           />
         </div>
-
         <div className="form-bottom-bar">
           <button type="submit" size="main" className="submit-button" color="dark">Sign up</button>
         </div>
@@ -115,12 +127,5 @@ function SignupForm() {
     </div>
   );
 }
-
-// SignupForm.propTypes = {
-//   userSession: PropTypes.oneOfType([
-//     PropTypes.objectOf(PropTypes.string),
-//     PropTypes.oneOf(['null', 'undefined']),
-//   ]),
-// };
 
 export default SignupForm;
