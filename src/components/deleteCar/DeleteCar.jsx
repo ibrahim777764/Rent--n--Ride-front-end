@@ -5,26 +5,37 @@ import './DeleteCar.scss';
 
 const DeleteCar = () => {
   const cars = useSelector((state) => state.cars);
-  
-  const deleteCarHandler = (id) => {
-    const requestOptions = {
-      method: 'DELETE',
-      headers: { 'Content-type': 'application/json; charset=UTF-8' },
-    };
 
-    fetch(`https://protected-sea-38971.herokuapp.com/api/v1/cars/${id}`, requestOptions)
-      .then((response) => checkResponse(response.status, id));
+  const handleDelete = (id) => {
+    deleteCarThunk(id);
   };
+  
+  // const deleteCarHandler = (id) => {
+  //   const requestOptions = {
+  //     method: 'DELETE',
+  //     headers: { 'Content-type': 'application/json; charset=UTF-8' },
+  //   };
 
-  if (cars.length === 0) {
-    return (
-      <div className="no-cars-container">
-        <div className="no-cars">
-          <span>Loading....</span>
-        </div>
-      </div>
-    );
-  }
+  //   fetch(`https://protected-sea-38971.herokuapp.com/api/v1/cars/${id}`, requestOptions)
+  //     .then((response) => checkResponse(response.status, id));
+  // };
+
+  // const checkResponse = (status, id) => {
+  //   if (status === 200) {
+  //     const newCars = cars.filter((car) => car.id !== id);
+  //     setCars(newCars);
+  //   }
+  // };
+
+  // if (cars.length === 0) {
+  //   return (
+  //     <div className="no-cars-container">
+  //       <div className="no-cars">
+  //         <span>Loading....</span>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   return (
     <div className="delete-car-container">
       <h2 className="delete-head">Delete Car</h2>
@@ -53,18 +64,11 @@ const DeleteCar = () => {
                 <td><p className="text-white mt-3" id="room-name">{car.name}</p></td>
                 <td className="text-center">
                 <button type="button" 
-                  onClick={() => deleteCarHandler(car.id)}>
-                  Delete
-                  </button>
-
-                  <button
-                    id="delete-car-btn"
-                    className="mt-2 car-btn"
-                    type="button"
-                    onClick={handleDelete}
+                  onClick={() => handleDelete(car.id)}
+                  className="car-btn"
                   >
                     Delete
-                  </button>
+                  </button>          
                 </td>
               </tr>
             ))}
