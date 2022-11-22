@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import { useState } from 'react';
 import Navbar from './components/navbar/Navbar';
 import AboutScreen from './routes/About';
 import AdminScreen from './routes/admin/Admin';
@@ -18,12 +17,13 @@ import SignupForm from './components/auth/signup-form';
 import LoginForm from './components/auth/login-form';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 import React, { useEffect } from "react";
-import { getUser } from './actions/userAuth/getUser';
+import { getUser } from './redux/auth/getUserAction';
 import { useSelector, useDispatch } from "react-redux";
+
 
 function App() {
   const user = useSelector((state) => {
-    return state.userReducer.items;
+    return state.userReducer;
   });
 
   const dispatch = useDispatch();

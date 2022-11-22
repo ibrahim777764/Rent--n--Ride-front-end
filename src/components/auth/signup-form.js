@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import history from '../../history';
 // redux hooks:
 import { useSelector, useDispatch } from 'react-redux';
 // action:
-import { signupUser } from '../../actions/userAuth/signupUser';
+import { signupUser } from '../../redux/auth/signUpAction';
 
 function SignupForm(props) {
   const [userState, setUserState] = useState({
@@ -31,7 +30,6 @@ function SignupForm(props) {
       password: '',
       password_confirmation: ''
     });
-    history.back('/');
   }
 
   const signedinUser = useSelector((state) => {

@@ -1,11 +1,10 @@
 
 import './auth.scss';
 import React, { useState } from 'react';
-import history from '../../history';
 // redux hooks:
 import { useSelector, useDispatch } from 'react-redux';
 // action:
-import { signinUser } from '../../actions/userAuth/signinUser'
+import { signinUser } from '../../redux/auth/loginAction'
 
 function SigninForm(props) {
 
@@ -29,12 +28,11 @@ function SigninForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(signupUser(userState))
+    dispatch(signinUser(signInState))
     setSignInState({
       email: '',
       password: ''
     });
-    history.back('/');
   }
   return (
     <div className="container page-login">
