@@ -1,0 +1,9 @@
+export const LOADING_USER = "LOADING_USER" // (((formerly POST_USER))))
+
+export const POST_USER_SUCCESS = "POST_USER_SUCCESS"
+export const POST_USER_ERRORS = "POST_USER_ERRORS"
+export const POST_USER_FAILURE = "POST_USER_FAILURE"
+
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS"
+export const SIGN_IN_ERRORS = "SIGN_IN_ERRORS"
+export const SIGN_IN_FAILURE = "SIGN_IN_FAILURE"

@@ -17,17 +17,33 @@ import ReservationScreen from './routes/Reservation';
 import SignupForm from './components/auth/signup-form';
 import LoginForm from './components/auth/login-form';
 import ProtectedRoutes from './routes/ProtectedRoutes';
+import React, { useEffect } from "react";
+import { getUser } from './actions/userAuth/getUser';
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-  const [userSession, setUserSession] = useState(() => JSON.parse(localStorage.getItem('user')));
+  const user = useSelector((state) => {
+    return state.userReducer.items;
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      dispatch(getUser(token))
+    }
+  }, []);
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route element={<LoginForm setUserSession={setUserSession} userSession={userSession} />} path="/login" />
-        <Route element={<SignupForm userSession={userSession} />} path="/signup" />
+        <Route element={<LoginForm />} path="/login" />
+        <Route element={<SignupForm />} path="/signup" />
+        <Route element={<HomeScreen />} path="/models" />
+        <Route element={<HomeScreen />} index />
 
-        <Route element={<ProtectedRoutes />}>
+        <Route element={<ProtectedRoutes user={user} />}>
           <Route element={<AdminScreen />} path="/admin" />
           <Route element={<NewScreen />} path="/admin/new" />
           <Route element={<EditScreen />} path="/admin/edit/:id" />
@@ -35,8 +51,6 @@ function App() {
           <Route element={<BookingScreen />} path="/booking" />
           <Route element={<DetailScreen />} path="/models/:id" />
           <Route element={<ReservationScreen />} path="/reservation" />
-          <Route element={<HomeScreen />} path="/models" />
-          <Route element={<HomeScreen />} index />
         </Route>
 
         <Route

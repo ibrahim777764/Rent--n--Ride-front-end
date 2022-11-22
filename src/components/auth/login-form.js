@@ -1,44 +1,45 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable linebreak-style */
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+
 import './auth.scss';
-// import { login } from '../../redux/auth/login';
+import React, { useState } from 'react';
+import history from '../../history';
+// redux hooks:
+import { useSelector, useDispatch } from 'react-redux';
+// action:
+import { signinUser } from '../../actions/userAuth/signinUser'
 
-function LoginForm() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const signupSuccess = useSelector((state) => state.signUp.success);
-  //   const location = useLocation();
+function SigninForm(props) {
 
-  // useEffect(() => {
-  //     if (userSession && location.pathname === '/login') navigate('/');
-  //   }, [location]);
+  const signedinUser = useSelector((state) => {
+    return state.user
+  })
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const formObject = new FormData(e.target);
-    const data = Object.fromEntries(formObject.entries());
-    const response = await fetch('https://protected-sea-38971.herokuapp.com/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  const [signInState, setSignInState] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleInputs = (e) => {
+    setSignInState({
+      ...signInState, [e.target.name]: e.target.value,
     });
-    if (response.ok) {
-      const session = await response.json();
-      // now here you can manipulate the data received from the server side
-      // can dispatch calls to the redux state, so it can store the login session for later use
-      // afterward, you can then navigate to another component by using navigate(VIEW_URL)
-    }
   };
+
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(signupUser(userState))
+    setSignInState({
+      email: '',
+      password: ''
+    });
+    history.back('/');
+  }
   return (
     <div className="container page-login">
 
-      <form className="login-form" onSubmit={onSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         {/* <p className="success-message">{signupSuccess}</p> */}
 
         <div className="add-padding-below">
@@ -46,6 +47,8 @@ function LoginForm() {
             type="email"
             id="email"
             name="email"
+            value={signInState.email}
+            onChange={handleInputs}
             className="form-field"
             placeholder="Email"
             required
@@ -57,6 +60,8 @@ function LoginForm() {
             type="password"
             id="password"
             name="password"
+            value={signInState.password}
+            onChange={handleInputs}
             className="form-field"
             placeholder="Password"
             required
@@ -72,4 +77,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default SigninForm;
