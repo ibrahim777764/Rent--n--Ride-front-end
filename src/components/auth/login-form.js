@@ -1,16 +1,13 @@
-
+/* eslint-disable linebreak-style */
 import './auth.scss';
 import React, { useState } from 'react';
 // redux hooks:
 import { useSelector, useDispatch } from 'react-redux';
 // action:
-import { signinUser } from '../../redux/auth/loginAction'
+import { signinUser } from '../../redux/auth/loginAction';
 
 function SigninForm(props) {
-
-  const signedinUser = useSelector((state) => {
-    return state.user
-  })
+  const signedinUser = useSelector((state) => state.user);
 
   const [signInState, setSignInState] = useState({
     email: '',
@@ -23,17 +20,16 @@ function SigninForm(props) {
     });
   };
 
-
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(signinUser(signInState))
+    e.preventDefault();
+    dispatch(signinUser(signInState));
     setSignInState({
       email: '',
-      password: ''
+      password: '',
     });
-  }
+  };
   return (
     <div className="container page-login">
 

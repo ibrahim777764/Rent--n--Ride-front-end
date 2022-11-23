@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 // redux hooks:
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +10,7 @@ function SignupForm(props) {
     username: '',
     email: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   });
 
   const handleInputs = (e) => {
@@ -18,28 +19,25 @@ function SignupForm(props) {
     });
   };
 
-
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(signupUser(userState))
+    e.preventDefault();
+    dispatch(signupUser(userState));
     setUserState({
       username: '',
       email: '',
       password: '',
-      password_confirmation: ''
+      password_confirmation: '',
     });
-  }
+  };
 
-  const signedinUser = useSelector((state) => {
-    return state.user
-  })
+  const signedinUser = useSelector((state) => state.user);
 
   return (
     <div className="container page-login">
       <form className="login-form" onSubmit={handleSubmit}>
-        <p className="has-text-centered">{msg}</p>
+        {/* <p className="has-text-centered">{msg}</p> */}
         <h2>SIGNUP</h2>
 
         <div className="add-padding-below">
