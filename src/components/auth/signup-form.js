@@ -1,11 +1,11 @@
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
 // redux hooks:
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // action:
 import { signupUser } from '../../redux/auth/signUpAction';
 
-function SignupForm(props) {
+function SignupForm() {
   const [userState, setUserState] = useState({
     username: '',
     email: '',
@@ -15,7 +15,8 @@ function SignupForm(props) {
 
   const handleInputs = (e) => {
     setUserState({
-      ...userState, [e.target.name]: e.target.value,
+      ...userState,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -32,7 +33,7 @@ function SignupForm(props) {
     });
   };
 
-  const signedinUser = useSelector((state) => state.user);
+  // const signedinUser = useSelector((state) => state.user);
 
   return (
     <div className="container page-login">
@@ -88,10 +89,16 @@ function SignupForm(props) {
           />
         </div>
         <div className="form-bottom-bar">
-          <button type="submit" size="main" className="submit-button" color="dark">Sign up</button>
+          <button
+            type="submit"
+            size="main"
+            className="submit-button"
+            color="dark"
+          >
+            Sign up
+          </button>
         </div>
       </form>
-
     </div>
   );
 }
