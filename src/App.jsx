@@ -40,8 +40,6 @@ function App() {
       <Routes>
         <Route element={<LoginForm />} path="/login" />
         <Route element={<SignupForm />} path="/signup" />
-        <Route element={<HomeScreen />} path="/models" />
-        <Route element={<HomeScreen />} index />
 
         <Route element={<ProtectedRoutes user={user} />}>
           <Route element={<AdminScreen />} path="/admin" />
@@ -51,6 +49,8 @@ function App() {
           <Route element={<BookingScreen />} path="/booking" />
           <Route element={<DetailScreen />} path="/models/:id" />
           <Route element={<ReservationScreen />} path="/reservation" />
+          <Route element={<HomeScreen />} path="/models" />
+          <Route element={<HomeScreen />} index />
         </Route>
 
         <Route
