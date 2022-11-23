@@ -26,12 +26,12 @@ function App() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    if (token) {
-      dispatch(getUser(token))
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //   if (token) {
+  //     dispatch(getUser(token))
+  //   }
+  // }, []);
 
   useEffect(() => {
     dispatch(loadCarsThunk());
@@ -41,17 +41,20 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route element={<LoginForm />} path="/login" />
-        <Route element={<SignupForm />} path="/signup" />
 
-        <Route element={<ProtectedRoutes user={user} />}>
-          <Route element={<AboutScreen />} path="/about" />
-          <Route element={<BookingScreen />} path="/booking" />
-          <Route element={<DetailScreen />} path="/models/:id" />
-          <Route element={<ReservationScreen />} path="/reservation" />
-          <Route element={<HomeScreen />} path="/models" />
-          <Route element={<HomeScreen />} index />
-        </Route>
+        {/* <Route element={<LoginForm />} path="/login" />
+        <Route element={<SignupForm />} path="/signup" /> */}
+
+        {/* <Route element={<ProtectedRoutes />}> */}
+        <Route element={<AboutScreen />} path="/about" />
+        <Route element={<BookingScreen />} path="/booking" />
+        <Route element={<DetailScreen />} path="/models/:id" />
+        <Route element={<ReservationScreen />} path="/reservation" />
+        <Route element={<HomeScreen />} path="/models" />
+        <Route element={<HomeScreen />} index />
+        <Route path="/addCar" element={<AddCar />} />
+        <Route path="/deleteCar" element={<DeleteCar />} />
+        {/* </Route> */}
 
         <Route
           element={(

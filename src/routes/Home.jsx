@@ -6,16 +6,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Home.scss';
 import CarCard from '../components/carCard/CarCard';
-// import { getVehicles } from '../redux/vehicles/vehicles';
 
 function Home() {
-  // const dispatch = useDispatch();
+
   const cars = useSelector((state) => state.cars);
-
-
-  // useEffect(() => {
-  //   dispatch(getVehicles());
-  // }, []);
 
   const settings = {
     className: 'center',

@@ -4,7 +4,7 @@ import {
 } from './Action';
 
 // const url = 'https://protected-sea-38971.herokuapp.com/api/v1/users'
-const API_URL = 'http://127.0.0.1:3000/api/v1/users'
+const API_URL = 'http://127.0.0.1:3001/api/v1/users'
 
 export const signupUser = ({
   username, email, password, password_confirmation,

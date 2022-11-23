@@ -33,15 +33,15 @@ const userReducer = (state = initialState, action) => {
     case SIGN_IN_FAILURE:
       return { ...state, isLoading: false, error: action.payload }
 
-    case GET_USER_SUCCESS:
-      const autoUser = action.payload
-      return { ...state, isLoading: false, user: autoUser, loggedIn: true }
+    // case GET_USER_SUCCESS:
+    //   const autoUser = action.payload
+    //   return { ...state, isLoading: false, user: autoUser, loggedIn: true }
 
-    case GET_USER_ERRORS:
-      return { ...state, isLoading: false, errors: action.payload.errors }
+    // case GET_USER_ERRORS:
+    //   return { ...state, isLoading: false, errors: action.payload.errors }
 
-    case GET_USER_FAILURE:
-      return { ...state, isLoading: false, error: action.payload }
+    // case GET_USER_FAILURE:
+    //   return { ...state, isLoading: false, error: action.payload }
 
     default:
       return state

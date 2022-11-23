@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 // API URL
-const url = 'https://protected-sea-38971.herokuapp.com/api/v1/cars/';
+const url = 'http://127.0.0.1:3001/api/v1/cars';
 
 // Actions
 const GET_CARS = 'redux/Cars/Cars/GET_CARS';
