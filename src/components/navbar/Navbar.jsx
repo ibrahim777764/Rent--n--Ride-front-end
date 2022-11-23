@@ -76,6 +76,11 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/signup" className={(isActive) => `nav-bar-item${isActive.isActive ? ' nav-item-current' : ''}`}>
+                  Signup
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/about" onClick={() => setNavVisible(false)}>
                   ABOUT
                 </NavLink>
