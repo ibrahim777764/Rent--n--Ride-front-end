@@ -20,9 +20,9 @@ import AddCar from './components/addCar/addCar';
 import DeleteCar from './components/deleteCar/DeleteCar';
 
 function App() {
-  const user = useSelector((state) => {
-    return state.userReducer;
-  });
+  // const user = useSelector((state) => {
+  //   return state.userReducer;
+  // });
 
   const dispatch = useDispatch();
 
@@ -44,7 +44,7 @@ function App() {
         <Route element={<LoginForm />} path="/login" />
         <Route element={<SignupForm />} path="/signup" />
 
-        <Route element={<ProtectedRoutes user={user} />}>
+        <Route element={<ProtectedRoutes />}>
           <Route element={<AboutScreen />} path="/about" />
           <Route element={<BookingScreen />} path="/booking" />
           <Route element={<DetailScreen />} path="/models/:id" />

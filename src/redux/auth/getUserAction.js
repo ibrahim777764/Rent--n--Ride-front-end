@@ -1,7 +1,7 @@
 
 import { LOADING_USER, GET_USER_SUCCESS, GET_USER_ERRORS, GET_USER_FAILURE } from './Action'
 
-const API_URL = 'http://127.0.0.1:3000/api/v1'
+const API_URL = 'http://127.0.0.1:3001/api/v1'
 export const getUser = (token) => (dispatch) => {
   dispatch({ type: LOADING_USER })
 
