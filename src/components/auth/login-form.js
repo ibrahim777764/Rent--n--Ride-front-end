@@ -1,13 +1,14 @@
 /* eslint-disable linebreak-style */
+import axios from 'axios';
 import './auth.scss';
 import React, { useState } from 'react';
 // redux hooks:
-import { useSelector, useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // action:
-import { signinUser } from '../../redux/auth/loginAction';
+// import { signinUser } from '../../redux/auth/loginAction';
 
-function SigninForm(props) {
-  const signedinUser = useSelector((state) => state.user);
+function SigninForm() {
+  // const signedinUser = useSelector((state) => state.user);
 
   const [signInState, setSignInState] = useState({
     email: '',
@@ -16,24 +17,42 @@ function SigninForm(props) {
 
   const handleInputs = (e) => {
     setSignInState({
-      ...signInState, [e.target.name]: e.target.value,
+      ...signInState,
+      [e.target.name]: e.target.value,
     });
   };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(signinUser(signInState));
-    setSignInState({
-      email: '',
-      password: '',
-    });
+    // dispatch(signinUser(signInState));
+    // setSignInState({
+    //   email: '',
+    //   password: '',
+    // });
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+    const response = await axios.post(
+      'https://protected-sea-38971.herokuapp.com/api/v1/login',
+      { email, password },
+      {
+        headers: {
+          Accept: 'application/json',
+          'content-type': 'application/json',
+        },
+      },
+    );
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    }
+    console.log(response.status);
   };
   return (
     <div className="container page-login">
-
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" action="#" onSubmit={handleSubmit}>
+        <h1>Sign in</h1>
         {/* <p className="success-message">{signupSuccess}</p> */}
 
         <div className="add-padding-below">
@@ -63,10 +82,16 @@ function SigninForm(props) {
         </div>
 
         <div className="form-bottom-bar">
-          <button type="submit" className="submit-button" size="main" color="dark">Login</button>
+          <button
+            type="submit"
+            className="submit-button"
+            size="main"
+            color="dark"
+          >
+            Login
+          </button>
         </div>
       </form>
-
     </div>
   );
 }
