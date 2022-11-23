@@ -1,4 +1,4 @@
-/* eslint linebreak-style: ["error", "windows"] */
+import { React, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,10 +16,15 @@ import ReservationScreen from './routes/Reservation';
 import SignupForm from './components/auth/signup-form';
 import LoginForm from './components/auth/login-form';
 import ProtectedRoutes from './routes/ProtectedRoutes';
-import React, { useEffect } from "react";
 import { getUser } from './redux/auth/getUserAction';
 import { useSelector, useDispatch } from "react-redux";
-
+import LoginScreen from './routes/Login';
+import SignupScreen from './routes/Signup';
+// import ProtectedRoutes from './routes/ProtectedRoutes';
+import { useDispatch } from 'react-redux';
+import { loadCarsThunk } from './redux/Cars/Cars'
+import AddCar from './components/addCar/addCar';
+import DeleteCar from './components/deleteCar/DeleteCar';
 
 function App() {
   const user = useSelector((state) => {
@@ -34,6 +39,11 @@ function App() {
       dispatch(getUser(token))
     }
   }, []);
+
+  useEffect(() => {
+    dispatch(loadCarsThunk());
+  }, []);
+
   return (
     <Router>
       <Navbar />
@@ -61,8 +71,8 @@ function App() {
           )}
           path="*"
         />
-      </Routes>
-    </Router>
+      </Routes >
+    </Router >
   );
 }
 

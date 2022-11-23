@@ -1,12 +1,13 @@
-/* eslint-disable linebreak-style */
+
 import { configureStore } from '@reduxjs/toolkit';
-import vehiclesReducer from './vehicles/vehicles';
+import { carsReducer } from './Cars/Cars';
 import userReducer from "./auth/athuRedecer";
 
 const store = configureStore({
   reducer: {
     userReducer,
-    vehicles: vehiclesReducer
+    cars: carsReducer,
+
   },
 });
 

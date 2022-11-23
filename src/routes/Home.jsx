@@ -1,21 +1,21 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint linebreak-style: ["error", "windows"] */
-import { React, useEffect } from 'react';
+
+import { React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Home.scss';
 import CarCard from '../components/carCard/CarCard';
-import { getVehicles } from '../redux/vehicles/vehicles';
+// import { getVehicles } from '../redux/vehicles/vehicles';
 
 function Home() {
-  const dispatch = useDispatch();
-  const vehicles = useSelector((state) => state.vehicles);
+  // const dispatch = useDispatch();
+  const cars = useSelector((state) => state.cars);
 
-  useEffect(() => {
-    dispatch(getVehicles());
-  }, []);
+
+  // useEffect(() => {
+  //   dispatch(getVehicles());
+  // }, []);
 
   const settings = {
     className: 'center',
@@ -49,18 +49,17 @@ function Home() {
           <ul className="car-slider">
             <Slider {...settings}>
               {
-            vehicles.map((car, index) => (
-              <CarCard
-                key={car.id}
-                index={index}
-                brand={car.brand}
-                model={car.model}
-                description={car.description}
-                image={car.galleries[0].photo}
-                id={car.id}
-              />
-            ))
-          }
+                cars.map((car, index) => (
+                  <CarCard
+                    key={car.id}
+                    index={index}
+                    name={car.name}
+                    description={car.description}
+                    image={car.image}
+                    id={car.id}
+                  />
+                ))
+              }
             </Slider>
           </ul>
         </div>
