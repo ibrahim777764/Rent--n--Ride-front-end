@@ -3,6 +3,7 @@ import React from 'react';
 import './CarCard.scss';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import noImage from '../../assets/images/no-img.png'
 
 function CarCard({
   name, description, image, id,
@@ -11,7 +12,7 @@ function CarCard({
     <li className="car-card">
       <div className="card-container">
         <Link to={`/models/${id}`}>
-          <img src={image || src} alt="car" className="car-card-image" />
+          <img src={image || noImage} alt="car" className="car-card-image" />
         </Link>
         <h2>{name}</h2>
         <hr className="division-span" />
