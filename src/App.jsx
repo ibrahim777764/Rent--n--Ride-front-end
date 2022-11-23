@@ -6,22 +6,15 @@ import {
 } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import AboutScreen from './routes/About';
-import AdminScreen from './routes/admin/Admin';
 import BookingScreen from './routes/Booking';
 import DetailScreen from './routes/Detail';
-import EditScreen from './routes/admin/Edit';
 import HomeScreen from './routes/Home';
-import NewScreen from './routes/admin/New';
 import ReservationScreen from './routes/Reservation';
 import SignupForm from './components/auth/signup-form';
 import LoginForm from './components/auth/login-form';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 import { getUser } from './redux/auth/getUserAction';
 import { useSelector, useDispatch } from "react-redux";
-import LoginScreen from './routes/Login';
-import SignupScreen from './routes/Signup';
-// import ProtectedRoutes from './routes/ProtectedRoutes';
-import { useDispatch } from 'react-redux';
 import { loadCarsThunk } from './redux/Cars/Cars'
 import AddCar from './components/addCar/addCar';
 import DeleteCar from './components/deleteCar/DeleteCar';
@@ -52,9 +45,6 @@ function App() {
         <Route element={<SignupForm />} path="/signup" />
 
         <Route element={<ProtectedRoutes user={user} />}>
-          <Route element={<AdminScreen />} path="/admin" />
-          <Route element={<NewScreen />} path="/admin/new" />
-          <Route element={<EditScreen />} path="/admin/edit/:id" />
           <Route element={<AboutScreen />} path="/about" />
           <Route element={<BookingScreen />} path="/booking" />
           <Route element={<DetailScreen />} path="/models/:id" />
