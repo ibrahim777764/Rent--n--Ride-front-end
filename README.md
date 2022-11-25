@@ -14,7 +14,8 @@
 [Final capstone project kanban board >>](https://github.com/users/ibrahim777764/projects/15)
 
 ### Team Members
-This team consist of five members that worked on the Rent-and-Ride project which include:
+This team consist of five members that worked on the Rent-and-Ride project.
+Members include:
 ```
 Mohammed Raad
 Ibrahim naseer
