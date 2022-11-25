@@ -21,10 +21,6 @@
 ## Getting Started
 
  [live demo]
- 
- ### Kanban
- [Link](https://github.com/users/ibrahim777764/projects/15
-)
 
 ### Prerequisite
 Go ahead and check the most recent version of each of these:
