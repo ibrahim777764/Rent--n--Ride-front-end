@@ -21,7 +21,40 @@ const ReservationScreen = () => {
 
   console.log(reservations);
   return (
-    
+    <div className="container page-reservation">
+      <div className="info-container">
+        {
+          reservations.bookings.map((item) => (
+            <article key={item.car.id}>
+              <div className="main-info">
+                <div
+                  className="photo"
+                  style={{ backgroundImage: `url(/assets/vehicles/${bgimage.vehicle_photo})` }}
+                />
+                <span>
+                  <p>{item.car.description}</p>
+                  <h2>
+                    <Link to={`/detail/${item.car.id}`}>
+                      {item.car.name}
+                    </Link>
+                  </h2>
+                </span>
+              </div>
+              <div className="dateRange">
+                <div>
+                  <span>Start</span>
+                  <p>{item.start_date}</p>
+                </div>
+                <div>
+                  <span>End</span>
+                  <p>{item.end_date}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
   );
 };
 
