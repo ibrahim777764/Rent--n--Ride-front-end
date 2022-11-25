@@ -1,37 +1,57 @@
-/* eslint linebreak-style: ["error", "windows"] */
-const url = 'https://elsonotake-backend.herokuapp.com/api/v1/vehicles';
+import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
+import carService from "../../services/services";
 
-// actions
 
-const GET_VEHICLES = 'redux/vehicles/vehicles/GET_VEHICLES';
+const initialState = {
+  cars: [],
+  car: {},
+  loading: false,
+  error: null,
+};
 
-// reducer
-
-export default function vehiclesReducer(state = [], action = {}) {
-  switch (action.type) {
-    case GET_VEHICLES:
-      return action.payload;
-    default:
-      return state;
+export const fetchVehicles = createAsyncThunk(
+  "vehicles/fetchVehicles",
+  async () => {
+    const response = await carService.getAllCars();
+    console.log(response.data);
+    return response.data;
   }
-}
+);
 
-//  actions
+export const fetchVehicle = createAsyncThunk(
+  "vehicles/fetchVehicle",
+  async (id) => {
+    const response = await carService.getCar(id);
+    return response.data;
+  }
+);
 
-function getVehicles() {
-  return async (dispatch) => {
-    const requestParameters = {
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem('current_user')).token,
-      },
-    };
-    const response = await fetch(url, requestParameters);
-    const vehicles = await response.json();
-    dispatch({
-      type: GET_VEHICLES,
-      payload: vehicles,
-    });
-  };
-}
+export const createVehicle = createAsyncThunk(
+  "vehicles/createVehicle",
+  async (data) => {
+    const response = await carService.createCar(data);
+    return response.data;
+  }
+);
 
-export { getVehicles };
+export const updateVehicle = createAsyncThunk(
+  "vehicles/updateVehicle",
+  async (data) => {
+    const response = await carService.updateCar(data.id, data);
+    return response.data;
+  }
+);
+
+export const removeVehicle = createAsyncThunk(
+  "vehicles/removeVehicle",
+  async (id) => {
+    const response = await carService.removeCar(id);
+    return response.data;
+  }
+);
+
+
+
+
+export default vehiclesSlice.reducer;
+
