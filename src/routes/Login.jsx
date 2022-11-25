@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import Button from '../components/button/Button';
 import './Login.scss';
+import { setUseProxies } from 'immer';
 
 function LoginScreen() {
   const loginForm = useRef();
-  const name = useRef();
+  const email = useRef();
   const password = useRef();
 
   const [isActive, setActive] = useState(true);
@@ -15,26 +16,21 @@ function LoginScreen() {
     setActive(false);
   };
 
-  const sendForm = async () => {
-    const requestOptions = {
+  const sendForm = () => {
+    fetch('http://localhost:3000/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(
         {
-          name: name.current.value.trim(),
+          email: email.current.value.trim(),
           password: password.current.value,
         },
       ),
-    };
-
-    const dataResponse = await fetch('https://github.com/ibrahim777764/Rent-and-Ride/tree/development/app/controllers/api/v1', requestOptions);
-    if (dataResponse.ok) {
-      const userData = await dataResponse.json();
-      localStorage.setItem('current_user', JSON.stringify(userData));
-      window.location.href = '/';
-    } else {
-      ToggleClass();
-    }
+    }).then((resp) => resp.json())
+      .then((data) => {
+        localStorage.setItem('token', data.token);
+        console.log(data.token);
+      });
   };
 
   return (
@@ -47,12 +43,12 @@ function LoginScreen() {
           <span className={isActive ? 'error-message' : 'error-message active'}>Error with credentials</span>
 
           <input
-            ref={name}
-            type="text"
-            id="name"
-            name="name"
+            ref={email}
+            type="email"
+            id="email"
+            name="email"
             className="form-field"
-            placeholder="Name"
+            placeholder="Email"
             required
           />
         </div>
