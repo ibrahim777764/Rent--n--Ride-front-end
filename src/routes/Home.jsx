@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
