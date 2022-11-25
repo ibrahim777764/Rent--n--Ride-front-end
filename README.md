@@ -9,7 +9,7 @@
 
 # SCREEN SHOT
 
-[Final capstone project kanban board >>](https://docs.google.com/document/d/1NRwptv0J7qvGzI18OfDvk0xeFv8GZab3AnjWEDTX9GI/edit?usp=sharing)
+[screen shot of  kanban board >>](https://docs.google.com/document/d/1NRwptv0J7qvGzI18OfDvk0xeFv8GZab3AnjWEDTX9GI/edit?usp=sharing)
 
 
 
