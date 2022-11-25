@@ -7,6 +7,15 @@
 * [Author](#author)
 
 
+# SCREEN SHOT
+
+[Final capstone project kanban board >>](https://docs.google.com/document/d/1NRwptv0J7qvGzI18OfDvk0xeFv8GZab3AnjWEDTX9GI/edit?usp=sharing)
+
+
+
+# kanban board link
+
+[Final capstone project kanban board >>](https://github.com/users/ibrahim777764/projects/15)
 #  front-end-react
 >front - end - of react app Rent and Ride
 ## Built With
@@ -76,9 +85,9 @@ Feel free to check the [issues page](https://github.com/gasangw/Blog-app/issues)
 
 Give a ⭐️ if you like this project!
 
+
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
+Original design idea by[ Murat Korkmazon Behance
+]( https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+-
