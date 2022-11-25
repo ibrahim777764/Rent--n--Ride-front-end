@@ -1,21 +1,22 @@
-
-import { React } from 'react';
+/* eslint-disable linebreak-style */
+import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Home.scss';
 import CarCard from '../components/carCard/CarCard';
-// import { getVehicles } from '../redux/vehicles/vehicles';
+import { fetchVehicles } from '../redux/vehicles/vehicles';
+import LoginScreen from './Login';
 
 function Home() {
-  // const dispatch = useDispatch();
-  const cars = useSelector((state) => state.cars);
+  const dispatch = useDispatch();
+  const vehicles = useSelector((state) => state.vehicles);
+  const user = useSelector((state) => state.user);
 
-
-  // useEffect(() => {
-  //   dispatch(getVehicles());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchVehicles());
+  }, []);
 
   const settings = {
     className: 'center',
@@ -36,8 +37,9 @@ function Home() {
       },
     ],
   };
-
+  console.log(vehicles);
   return (
+
     <div className="container">
       <div className="home-container">
         <header className="cars-header">
@@ -49,7 +51,7 @@ function Home() {
           <ul className="car-slider">
             <Slider {...settings}>
               {
-                cars.map((car, index) => (
+                vehicles.cars.map((car, index) => (
                   <CarCard
                     key={car.id}
                     index={index}

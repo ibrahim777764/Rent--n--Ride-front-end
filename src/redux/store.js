@@ -1,9 +1,14 @@
+/* eslint linebreak-style: ["error", "windows"] */
 import { configureStore } from '@reduxjs/toolkit';
-import carsSliceReducer from './Cars/Cars';
+import vehiclesSlice from './vehicles/vehicles';
+import userSlice from './user/user';
+import bookingsSlice from './booking/booking';
 
 const store = configureStore({
   reducer: {
-    cars: carsSliceReducer,
+    vehicles: vehiclesSlice,
+    user: userSlice,
+    bookings: bookingsSlice,
   },
 });
 

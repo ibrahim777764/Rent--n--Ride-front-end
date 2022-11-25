@@ -1,48 +1,41 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchBookings } from '../redux/booking/booking';
 
 const ReservationScreen = () => {
-  const reservations = [
-    {
-      vehicle_id: 1,
-      vehicle_photo: 'model1a.jpg',
-      vehicle_brand: 'Lamborghini',
-      vehicle_model: 'AVENTADOR LP 780-4 ULTIMAE',
-      start_date: 'Oct 18. 2022',
-      end_date: 'Oct 26. 2022',
-    },
-    {
-      vehicle_id: 2,
-      vehicle_photo: 'model2a.jpg',
-      vehicle_brand: 'Mazeratti',
-      vehicle_model: 'MC20 CIELO',
-      start_date: 'Oct 18. 2022',
-      end_date: 'Oct 26. 2022',
-    },
-  ];
+  const dispatch = useDispatch();
+  const reservations = useSelector((state) => state.bookings);
 
+  useEffect(() => {
+    const id = JSON.parse(localStorage.getItem('current_user'));
+    console.log(id);
+    dispatch(fetchBookings(id));
+    console.log(id);
+  }, []);
+
+  const bgimage = {
+    vehicle_photo: 'model1a.jpg',
+  };
+
+  console.log(reservations);
   return (
     <div className="container page-reservation">
       <div className="info-container">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed interdum lorem.
-          Quisque sed eleifend urna, in mattis lectus. Integer eu nulla ut libero gravida maximus.
-          quam magna, mattis dignissim blandit nec, rhoncus non dui.
-        </p>
-
         {
-          reservations.map((item) => (
-            <article key={item.vehicle_id}>
+          reservations.bookings.map((item) => (
+            <article key={item.car.id}>
               <div className="main-info">
                 <div
                   className="photo"
-                  style={{ backgroundImage: `url(/assets/vehicles/${item.vehicle_photo})` }}
+                  style={{ backgroundImage: `url(/assets/vehicles/${bgimage.vehicle_photo})` }}
                 />
                 <span>
-                  <p>{item.vehicle_brand}</p>
+                  <p>{item.car.description}</p>
                   <h2>
-                    <Link to={`/detail/${item.vehicle_id}`}>
-                      {item.vehicle_model}
+                    <Link to={`/detail/${item.car.id}`}>
+                      {item.car.name}
                     </Link>
                   </h2>
                 </span>

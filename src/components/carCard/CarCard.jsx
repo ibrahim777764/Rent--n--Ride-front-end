@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unused-prop-types */
 /* eslint linebreak-style: ["error", "windows"] */
 import React from 'react';
 import './CarCard.scss';
@@ -13,6 +15,8 @@ function CarCard({
         <Link to={`/models/${id}`}>
           <img src={image || src} alt="car" className="car-card-image" />
         </Link>
+        <h2>{name}</h2>
+
         <h2>{name}</h2>
         <hr className="division-span" />
         <p>{description}</p>

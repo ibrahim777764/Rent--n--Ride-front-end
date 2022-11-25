@@ -1,28 +1,31 @@
-
-import React, { useState } from 'react';
+/* eslint-disable import/no-named-as-default */
+/* eslint linebreak-style: ["error", "windows"] */
+import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import BackButton from '../components/backbutton/BackButton';
 import Booking from '../components/booking/Booking';
 import Button from '../components/button/Button';
-// import Gallery from '../components/gallery/Gallery';
+import { fetchVehicle } from '../redux/vehicles/vehicles';
 
 const DetailScreen = () => {
+  const dispatch = useDispatch();
+  const car = useSelector((state) => state.vehicles.car);
   const { id } = useParams();
-  const cars = useSelector((state) => state.cars);
-  const car = cars.find((element) => element.id === parseInt(id, 10));
-  // const gallery = car.image
   const [background, setBackground] = useState(car.id);
   const [bookVisible, setBookVisible] = useState(false);
 
   const showBooking = () => setBookVisible(!bookVisible);
   const changeBG = (newbg) => setBackground(newbg);
 
-  return (
-    <div className="container" style={{ backgroundImage: `url(${background})` }}>
-      <div className="whiteCortain">
+  useEffect(() => {
+    dispatch(fetchVehicle(id));
+  }, []);
 
-        {/* <Gallery data={gallery} btnAxn={changeBG} /> */}
+  return (
+    <div className="container">
+      <div className="container" style={{ backgroundImage: `url(${car.image})` }} />
+      <div className="whiteCortain">
 
         <div className="detailBox">
           <h1>{car.name}</h1>
@@ -38,7 +41,7 @@ const DetailScreen = () => {
               </tr>
               <tr>
                 <td>Rented?</td>
-                <td className="text-end">{car.rented ? "Yes" : "No"}</td>
+                <td className="text-end">{car.rented ? 'Yes' : 'No'}</td>
               </tr>
               <tr>
                 <td>Duration (months)</td>

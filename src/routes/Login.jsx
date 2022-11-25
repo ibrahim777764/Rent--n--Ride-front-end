@@ -1,58 +1,51 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import {  useRef, useState } from 'react';
 import Button from '../components/button/Button';
 import './Login.scss';
+import React from 'react';
+import { login } from '../redux/user/user';
+import { useDispatch ,useSelector} from 'react-redux';
 
 function LoginScreen() {
+  const userState = useSelector(state => state.user);
+  const sendForm = useRef();
   const loginForm = useRef();
-  const name = useRef();
+  const email = useRef();
   const password = useRef();
 
-  const [isActive, setActive] = useState(true);
+  const dispatch = useDispatch();
 
-  const ToggleClass = () => {
-    setActive(false);
-  };
+  const [emailError, setEmailError] = useState('');
 
-  const sendForm = async () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        {
-          name: name.current.value.trim(),
-          password: password.current.value,
-        },
-      ),
-    };
-
-    const dataResponse = await fetch('https://github.com/ibrahim777764/Rent-and-Ride/tree/development/app/controllers/api/v1', requestOptions);
-    if (dataResponse.ok) {
-      const userData = await dataResponse.json();
-      localStorage.setItem('current_user', JSON.stringify(userData));
-      window.location.href = '/';
+  const loginHandler = (e) => {
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    if (emailValue === '') {
+      setEmailError('Email is required');
     } else {
-      ToggleClass();
+      setEmailError('');
     }
+    dispatch(login({email: emailValue, password: passwordValue}));
   };
 
   return (
+
     <div className="container page-login">
 
       <form action="#" className="login-form" method="POST" ref={loginForm}>
         <h2>LOGIN</h2>
 
         <div className="add-padding-below">
-          <span className={isActive ? 'error-message' : 'error-message active'}>Error with credentials</span>
+    
 
           <input
-            ref={name}
-            type="text"
-            id="name"
-            name="name"
+            ref={email}
+            type="email"
+            id="email"
+            name="email"
             className="form-field"
-            placeholder="Name"
+            placeholder="Email"
             required
           />
         </div>
@@ -78,7 +71,7 @@ function LoginScreen() {
 
         <div className="form-bottom-bar">
           <Button
-            btnAxn={sendForm}
+            btnAxn={loginHandler}
             label="Login"
             size="main"
             color="dark"

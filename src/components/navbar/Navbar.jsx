@@ -39,6 +39,7 @@ const Navbar = () => {
 
   const endSession = () => {
     window.localStorage.removeItem('current_user');
+    window.localStorage.removeItem('token');
     window.location.href = '/login';
   };
 
