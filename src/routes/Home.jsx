@@ -7,14 +7,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Home.scss';
 import CarCard from '../components/carCard/CarCard';
-import { getVehicles } from '../redux/vehicles/vehicles';
+import { fetchVehicles } from '../redux/vehicles/vehicles';
+import LoginScreen from './Login';
 
 function Home() {
   const dispatch = useDispatch();
   const vehicles = useSelector((state) => state.vehicles);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(getVehicles());
+    dispatch(fetchVehicles());
   }, []);
 
   const settings = {
@@ -36,36 +38,10 @@ function Home() {
       },
     ],
   };
-
+  console.log(vehicles);
   return (
-    <div className="container">
-      <div className="home-container">
-        <header className="cars-header">
-          <h1>LATEST MODELS</h1>
-          <p>Please select a car</p>
-          <hr className="division-span" />
-        </header>
-        <div className="cars-container">
-          <ul className="car-slider">
-            <Slider {...settings}>
-              {
-            vehicles.map((car, index) => (
-              <CarCard
-                key={car.id}
-                index={index}
-                brand={car.brand}
-                model={car.model}
-                description={car.description}
-                image={car.galleries[0].photo}
-                id={car.id}
-              />
-            ))
-          }
-            </Slider>
-          </ul>
-        </div>
-      </div>
-    </div>
+
+    
   );
 }
 
