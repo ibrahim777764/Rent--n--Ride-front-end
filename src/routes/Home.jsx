@@ -1,4 +1,4 @@
-
+/* eslint-disable linebreak-style */
 import { React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
