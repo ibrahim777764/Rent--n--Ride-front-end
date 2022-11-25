@@ -6,7 +6,6 @@ import { useSelector,useDispatch } from 'react-redux';
 import BackButton from '../components/backbutton/BackButton';
 import Booking from '../components/booking/Booking';
 import Button from '../components/button/Button';
-// import Gallery from '../components/gallery/Gallery';
 import { fetchVehicle } from '../redux/vehicles/vehicles';
 
 const DetailScreen = () => {
@@ -27,8 +26,6 @@ return (
   <div className="container">
      <div className="container" style={{ backgroundImage: `url(${car.image})` }}></div>
     <div className="whiteCortain">
-
-      {/* <Gallery data={gallery} btnAxn={changeBG} /> */}
 
       <div className="detailBox">
         <h1>{car.name}</h1>
