@@ -1,5 +1,3 @@
-# Rent--n--Ride-front-end
-
 ## Table of Contents
 
 * [About the Project](#front-end-react)
@@ -83,3 +81,4 @@ Give a ⭐️ if you like this project!
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
+
