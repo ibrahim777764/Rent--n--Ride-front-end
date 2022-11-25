@@ -1,46 +1,43 @@
 /* eslint linebreak-style: ["error", "windows"] */
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import {  useRef, useState } from 'react';
 import Button from '../components/button/Button';
 import './Login.scss';
-import { setUseProxies } from 'immer';
+import React from 'react';
+import { login } from '../redux/user/user';
+import { useDispatch ,useSelector} from 'react-redux';
 
 function LoginScreen() {
+  const userState = useSelector(state => state.user);
+  const sendForm = useRef();
   const loginForm = useRef();
   const email = useRef();
   const password = useRef();
 
-  const [isActive, setActive] = useState(true);
+  const dispatch = useDispatch();
 
-  const ToggleClass = () => {
-    setActive(false);
-  };
+  const [emailError, setEmailError] = useState('');
 
-  const sendForm = () => {
-    fetch('http://localhost:3000/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        {
-          email: email.current.value.trim(),
-          password: password.current.value,
-        },
-      ),
-    }).then((resp) => resp.json())
-      .then((data) => {
-        localStorage.setItem('token', data.token);
-        console.log(data.token);
-      });
+  const loginHandler = (e) => {
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    if (emailValue === '') {
+      setEmailError('Email is required');
+    } else {
+      setEmailError('');
+    }
+    dispatch(login({email: emailValue, password: passwordValue}));
   };
 
   return (
+
     <div className="container page-login">
 
       <form action="#" className="login-form" method="POST" ref={loginForm}>
         <h2>LOGIN</h2>
 
         <div className="add-padding-below">
-          <span className={isActive ? 'error-message' : 'error-message active'}>Error with credentials</span>
+    
 
           <input
             ref={email}
@@ -74,7 +71,7 @@ function LoginScreen() {
 
         <div className="form-bottom-bar">
           <Button
-            btnAxn={sendForm}
+            btnAxn={loginHandler}
             label="Login"
             size="main"
             color="dark"
