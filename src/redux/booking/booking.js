@@ -32,4 +32,19 @@ export const removeBooking = createAsyncThunk(
     }
 );
 
+export const bookingsSlice = createSlice({
+    name: 'bookings',
+    initialState,
+    reducers: {},
+    extraReducers: {
+        [fetchBookings.fulfilled]: (state,action) => {
+            state.loading = true;
+            state.bookings=action.payload;
+            console.log(state.bookings);
+            console.log(state.loading);
+
+        }
+    }
+});
+
 export default bookingsSlice.reducer;
