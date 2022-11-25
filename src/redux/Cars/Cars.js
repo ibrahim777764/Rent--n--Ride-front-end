@@ -28,7 +28,7 @@ export const addCarThunk = createAsyncThunk(POST_CAR, async (
 ) => {
   const car = {
     name,
-    image,
+    image: image || "IMAGE",
     description,
     price,
     location,
