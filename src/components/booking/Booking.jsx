@@ -27,6 +27,7 @@ const Booking = (props) => {
   const dateStart = useRef();
   const dateEnd = useRef();
   const form = useRef();
+  const city = useRef();
 
   const [days, setDays] = useState('---');
   const [cost, setCost] = useState('---');
@@ -121,13 +122,15 @@ const Booking = (props) => {
 
           <div className="add-margin-below">
             <label htmlFor="city">City</label>
-            <select name="city" className="form-field" required>
-              <option value="">Select one</option>
-              <option value="Bogota">Bogota (Col)</option>
-              <option value="Hermosillo">Hermosillo (Méx)</option>
-              <option value="Manizales">Manizales (Col)</option>
-              <option value="Sao Paulo">Sao Paulo (Bra)</option>
-            </select>
+            <input
+      ref={city}
+      type=""
+      id="city"
+      name="city"
+      className="form-field"
+      placeholder="city"
+      required
+    />
           </div>
 
           <div className="resume">
