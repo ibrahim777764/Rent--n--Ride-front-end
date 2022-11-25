@@ -1,5 +1,3 @@
-# Rent--n--Ride-front-end
-
 ## Table of Contents
 
 * [About the Project](#front-end-react)
@@ -8,6 +6,23 @@
 * [Contributing](#🤝-contributing)
 * [Author](#author)
 
+
+### Kanban board screenshoot
+[screen shot of  kanban board >>](https://docs.google.com/document/d/1NRwptv0J7qvGzI18OfDvk0xeFv8GZab3AnjWEDTX9GI/edit?usp=sharing)
+
+### kanban board link
+[Final capstone project kanban board >>](https://github.com/users/ibrahim777764/projects/15)
+
+### Team Members
+This team consist of five members that worked on the Rent-and-Ride project.
+Members include:
+```
+Mohammed Raad
+Ibrahim naseer
+Favour Ezeugwa
+Gasangwa Thomas
+Afolabi Akorede
+```
 
 #  front-end-react
 >front - end - of react app Rent and Ride
@@ -78,8 +93,9 @@ Feel free to check the [issues page](https://github.com/gasangw/Blog-app/issues)
 
 Give a ⭐️ if you like this project!
 
+
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+Original design idea by[ Murat Korkmazon Behance
+]( https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+-
