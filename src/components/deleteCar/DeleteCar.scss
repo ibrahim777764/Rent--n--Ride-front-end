@@ -1,0 +1,32 @@
+.no-cars-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 22% auto;
+  height: 100%;
+  width: 40%;
+  background-color: #98bd2a;
+  color: #fafafa;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.delete-car-container {
+  margin: 8% 30%;
+}
+
+.delete-head {
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.delete-para {
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 2% 0;
+  width: 100%;
+  line-height: 25px;
+}

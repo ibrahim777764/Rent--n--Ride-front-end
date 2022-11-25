@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint linebreak-style: ["error", "windows"] */
-import { React, useEffect } from 'react';
+
+import { React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
