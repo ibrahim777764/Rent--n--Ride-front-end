@@ -123,14 +123,14 @@ const Booking = (props) => {
           <div className="add-margin-below">
             <label htmlFor="city">City</label>
             <input
-      ref={city}
-      type=""
-      id="city"
-      name="city"
-      className="form-field"
-      placeholder="city"
-      required
-    />
+              ref={city}
+              type=""
+              id="city"
+              name="city"
+              className="form-field"
+              placeholder="city"
+              required
+            />
           </div>
 
           <div className="resume">
