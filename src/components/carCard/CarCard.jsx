@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function CarCard({
-  brand, model, description, image, id,
+  name, description, image, id,
 }) {
   return (
     <li className="car-card">
@@ -13,8 +13,8 @@ function CarCard({
         <Link to={`/models/${id}`}>
           <img src={image} alt="car" className="car-card-image" />
         </Link>
-        <h2>{brand}</h2>
-        <h2>{model}</h2>
+      
+        <h2>{name}</h2>
         <hr className="division-span" />
         <p>{description}</p>
 
